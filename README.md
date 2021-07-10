@@ -1,5 +1,14 @@
-# nea-project
-nea-project
+# cl_calculator
+
+```sh
+## install tkinter globally
+brew install python-tk
+
+## create & activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 ```s
 when you have a line:
@@ -19,7 +28,8 @@ scaling the line to the graph:
         c = int(input('enter the y intercept: '))
         for x in range(100, 600):
             y = (m * x) + c
-            if y >= 100 and y <= 600:
+            if y >= 100 and y <= 600:cccccclvtjdvnedldndhbrfljuetkltkutlcheefjbvr
+
                 yco_ordinates.append(y)
                 xco_ordinates.append(x)
         for i in range(0, len(yco_ordinates) - 1):
