@@ -1,3 +1,15 @@
+# cl_calculator
+
+```sh
+## install tkinter globally
+brew install python-tk
+
+## create & activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 # cL_calculator
 my goals for this code:
     1.	The user can enter the equation (or a polynomial) as a string and the program will translate and slice elements of that string, putting it together into a format that the computer understands.
