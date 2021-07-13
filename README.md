@@ -1,5 +1,9 @@
 # cl_calculator
 
+## NEXT
+* extract hard codded values as parameters
+* think of breaking the program into modules
+
 ```sh
 ## install tkinter globally
 brew install python-tk
