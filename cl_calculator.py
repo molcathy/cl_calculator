@@ -1,6 +1,6 @@
 # from teacher_programme import draw_axes
-from tkinter import Tk, Canvas, mainloop
 
+from tkinter import Tk, Canvas, mainloop
 
 def fixed_scale_values(start_choice, end_choice, real_start, real_end):
     """Figures out the gradient (m) and the y intercept (c)."""
@@ -131,10 +131,9 @@ def power2_curve(
     """This creates a curve made by a polynomial to the power of 2."""
     new_x = []
     new_y = []
-    max = 0
     x = start_x_choice
     while x <= end_x_choice:
-        y = a * x ** 2 + b * x + c
+        y = (a * x ** 2) + (b * x) + c
         if y >= start_y_choice and y <= end_y_choice:
             new_x.append(x)
             new_y.append(y)
@@ -152,7 +151,6 @@ def power2_curve(
             width=2,
             fill="blue",
         )
-
 
 def line(
     m,
@@ -173,11 +171,9 @@ def line(
     x = start_x_choice
     while x <= end_x_choice:
         y = x * m + c
-
         if y >= start_y_choice and y <= end_y_choice:
             list_y.append(y)
             list_x.append(x)
-
         x += 0.1
         # the smaller the value added the more accurate the result and matches the graph
     for i in range(0, len(list_y) - 1):
@@ -193,7 +189,6 @@ def line(
             width=2,
             fill="black",
         )
-
 
 if __name__ == "__main__":
     root = Tk()
