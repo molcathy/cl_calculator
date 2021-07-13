@@ -1,6 +1,5 @@
-# from teacher_programme import draw_axes
-
 from tkinter import Tk, Canvas, mainloop
+
 
 def fixed_scale_values(start_choice, end_choice, real_start, real_end):
     """Figures out the gradient (m) and the y intercept (c)."""
@@ -152,6 +151,7 @@ def power2_curve(
             fill="blue",
         )
 
+
 def line(
     m,
     c,
@@ -190,10 +190,8 @@ def line(
             fill="black",
         )
 
-if __name__ == "__main__":
-    root = Tk()
 
-    canvas = Canvas(width=1000, height=1000, bg="lightblue")
+def main():
     canvas.grid()
 
     real_x_start = 100
@@ -298,3 +296,9 @@ if __name__ == "__main__":
     )
 
     mainloop()
+
+
+if __name__ == "__main__":
+    root = Tk()
+    canvas = Canvas(width=1000, height=1000, bg="lightblue")
+    main()
