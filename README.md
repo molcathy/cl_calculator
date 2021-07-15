@@ -3,12 +3,6 @@
 ## NEXT
 * improve comments (cm)
 * extract hard codded values as parameters (cm)
-* break the program into modules e.g. (cm and gm):
-    - `app.py` - this would be the main main module
-    - `lines_curves.py`
-
-## DONE
-* improve readme.md (gm)
 
 ## Contributing to the project
 Prep steps:
