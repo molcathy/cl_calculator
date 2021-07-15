@@ -3,6 +3,8 @@
 ## NEXT
 * improve comments (cm)
 * extract hard codded values as parameters (cm)
+* evaluate and remove files from `tmp` directory (cm)
+* tests for `src/scale` (gm, cm)
 
 ## Contributing to the project
 Prep steps:
