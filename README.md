@@ -8,6 +8,7 @@
 ## DONE
 * `scale.py` tests
 * github automated tests
+* test push
 
 ## testing
 ```sh
