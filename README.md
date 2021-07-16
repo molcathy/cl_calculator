@@ -5,6 +5,10 @@
 * extract hard codded values as parameters (cm)
 * evaluate and remove files from `tmp` directory (cm)
 
+## DONE
+* `scale.py` tests
+* github automated tests
+
 ## testing
 ```sh
 ## execute tests
