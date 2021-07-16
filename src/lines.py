@@ -7,9 +7,10 @@ from scale import fixed_scale_values, y_scale, x_scale
 #   - all parameters containing x, y modified to *start* with x_, y_
 
 # TODO!
-# * improve parameters e.g.:
+# * improve variables e.g.:
 #   - a, b, c: do not mean anything
 #   - x_start_real, x_end_real: what real means
+#   - list_x, list_y ... mean nothing other then they are lists; the variable names must say something about its main role/feature
 # * pass width and width to canvas as parameters to the functions that invokes them
 # * write proper comments by replacing <TAKES> <DOES> and <RETURNS> with actual comments
 # * brake line() in 3 functions in the same way I did power2_curve() e.g.
@@ -19,21 +20,37 @@ from scale import fixed_scale_values, y_scale, x_scale
 #   - get_power2_curve()
 #   - get_line()
 # * _maybe_ rename lines.py to lines_curves.py because it draws both lines and curves or even brake them down in 2 different volumes
+# * used lambda to generalize get_power2_curve
 
 
-def get_power2_curve(a, b, c, x_start, x_end, y_start, y_end):
+def get_power2_curve(a, b, c, x_start, x_end, y_start, y_end, operation):
     """get_power2_curve ... <TAKES> <DOES> and <RETURNS>"""
     x_new = []
     y_new = []
-    x = x_start
-    while x <= x_end:
-        y = (a * x ** 2) + (b * x) + c
+    while x_start <= x_end:
+        # maybe y must be replaced with what actually the operation does to x_start
+        y = operation(x_start)
         if y >= y_start and y <= y_end:
-            x_new.append(x)
+            x_new.append(x_start)
             y_new.append(y)
         # add a really small amount so it looks like a curve
-        x += 0.01
+        x_start += 0.01
     return x_new, y_new
+
+
+# def get_power2_curve(a, b, c, x_start, x_end, y_start, y_end):
+#     """get_power2_curve ... <TAKES> <DOES> and <RETURNS>"""
+#     x_new = []
+#     y_new = []
+#     x = x_start
+#     while x <= x_end:
+#         y = (a * x ** 2) + (b * x) + c
+#         if y >= y_start and y <= y_end:
+#             x_new.append(x)
+#             y_new.append(y)
+#         # add a really small amount so it looks like a curve
+#         x += 0.01
+#     return x_new, y_new
 
 
 def draw_power2_curve(
@@ -76,7 +93,16 @@ def power2_curve(
     y_end_real,
 ):
     """power2_curve ... <TAKES> <DOES> and <RETURNS>"""
-    x_new, y_new = get_power2_curve(a, b, c, x_start, x_end, y_start, y_end)
+    x_new, y_new = get_power2_curve(
+        a,
+        b,
+        c,
+        x_start,
+        x_end,
+        y_start,
+        y_end,
+        operation=lambda i: (a * i ** 2) + (b * i) + c,
+    )
     draw_power2_curve(
         canvas,
         x_start,
