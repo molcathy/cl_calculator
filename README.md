@@ -4,6 +4,7 @@
 * improve comments (cm)
 * extract hard codded values as parameters (cm)
 * evaluate and remove files from `tmp` directory (cm)
+* create a rudimentary cli user interface where you can ask the user either to go with defaults or modify particular values for testing purposes - this interface can be later replaced by tkinter actual interface
 
 ## DONE
 * `scale.py` tests
