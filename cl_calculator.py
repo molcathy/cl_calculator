@@ -2,7 +2,7 @@ import sys
 
 sys.path.append("./src")
 from tkinter import Tk, Canvas, mainloop
-from src import axes, lines
+from src import axes, lines_curves
 
 
 def main():
@@ -82,7 +82,7 @@ def main():
         real_y_end,
     )
 
-    lines.power2_curve(
+    lines_curves.power2_curve(
         canvas,
         3,
         4,
@@ -97,7 +97,7 @@ def main():
         real_y_end,
     )
 
-    lines.line(
+    lines_curves.line(
         canvas,
         1,
         8,
