@@ -13,40 +13,25 @@ from scale import fixed_scale_values, y_scale, x_scale
 #   - get_line(): to perform the math and return its results
 #   - draw_line(): to perform the math and return its results
 # * implement tests for functions that preform the math:
-#   - get_power2_curve()
+#   - get_power2_curve_coordinates()
 #   - get_line()
 # * _maybe_ rename lines.py to lines_curves.py because it draws both lines and curves or even brake them down in 2 different volumes
-# * used lambda to generalize get_power2_curve
+# * used lambda to generalize get_power2_curve_coordinates
 
 
-def get_power2_curve(a, b, c, x_start, x_end, y_start, y_end, operation):
-    """get_power2_curve ... <TAKES> <DOES> and <RETURNS>"""
+def get_power2_curve_coordinates(a, b, c, x_start, x_end, y_start, y_end):
+    """get_power2_curve_coordinates ... <TAKES> <DOES> and <RETURNS>"""
     x_coordinates = []
     y_coordinates = []
-    while x_start <= x_end:
-        # maybe y must be replaced with what actually the operation does to x_start
-        y = operation(x_start)
+    x = x_start
+    while x <= x_end:
+        y = (a * x ** 2) + (b * x) + c
         if y >= y_start and y <= y_end:
-            x_coordinates.append(x_start)
+            x_coordinates.append(x)
             y_coordinates.append(y)
         # add a really small amount so it looks like a curve
-        x_start += 0.01
+        x += 0.01
     return x_coordinates, y_coordinates
-
-
-# def get_power2_curve(a, b, c, x_start, x_end, y_start, y_end):
-#     """get_power2_curve ... <TAKES> <DOES> and <RETURNS>"""
-#     x_coordinates = []
-#     y_coordinates = []
-#     x = x_start
-#     while x <= x_end:
-#         y = (a * x ** 2) + (b * x) + c
-#         if y >= y_start and y <= y_end:
-#             x_coordinates.append(x)
-#             y_coordinates.append(y)
-#         # add a really small amount so it looks like a curve
-#         x += 0.01
-#     return x_coordinates, y_coordinates
 
 
 def draw_power2_curve(
@@ -89,7 +74,7 @@ def power2_curve(
     y_tk_end,
 ):
     """power2_curve ... <TAKES> <DOES> and <RETURNS>"""
-    x_coordinates, y_coordinates = get_power2_curve(
+    x_coordinates, y_coordinates = get_power2_curve_coordinates(
         a,
         b,
         c,
@@ -97,7 +82,6 @@ def power2_curve(
         x_end,
         y_start,
         y_end,
-        operation=lambda i: (a * i ** 2) + (b * i) + c,
     )
     draw_power2_curve(
         canvas,
@@ -114,6 +98,45 @@ def power2_curve(
     )
 
 
+def get_line_coordinates(x_start, x_end, y_start, y_end, m, c):
+    x_coordinates = []
+    y_coordinates = []
+
+    x = x_start
+    while x <= x_end:
+        y = x * m + c
+        if y >= y_start and y <= y_end:
+            y_coordinates.append(y)
+            x_coordinates.append(x)
+        # the smaller the value added the more accurate the result and matches the graph
+        x += 0.1
+    return x_coordinates, y_coordinates
+
+
+def draw_line(
+    canvas,
+    x_coordinates,
+    y_coordinates,
+    x_start,
+    x_end,
+    x_tk_start,
+    x_tk_end,
+    y_start,
+    y_end,
+    y_tk_start,
+    y_tk_end,
+):
+    for i in range(0, len(y_coordinates) - 1):
+        canvas.create_line(
+            x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
+            y_scale(y_coordinates[i], y_start, y_end, y_tk_start, y_tk_end),
+            x_scale(x_coordinates[i + 1], x_start, x_end, x_tk_start, x_tk_end),
+            y_scale(y_coordinates[i + 1], y_start, y_end, y_tk_start, y_tk_end),
+            width=2,
+            fill="black",
+        )
+
+
 def line(
     canvas,
     m,
@@ -128,26 +151,22 @@ def line(
     y_tk_end,
 ):
     """line ... <TAKES> <DOES> and <RETURNS>"""
-    x_coordinates = []
-    y_coordinates = []
-
-    x = x_start
-    while x <= x_end:
-        y = x * m + c
-        if y >= y_start and y <= y_end:
-            y_coordinates.append(y)
-            x_coordinates.append(x)
-        # the smaller the value added the more accurate the result and matches the graph
-        x += 0.1
-    for i in range(0, len(y_coordinates) - 1):
-        canvas.create_line(
-            x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
-            y_scale(y_coordinates[i], y_start, y_end, y_tk_start, y_tk_end),
-            x_scale(x_coordinates[i + 1], x_start, x_end, x_tk_start, x_tk_end),
-            y_scale(y_coordinates[i + 1], y_start, y_end, y_tk_start, y_tk_end),
-            width=2,
-            fill="black",
-        )
+    x_coordinates, y_coordinates = get_line_coordinates(
+        x_start, x_end, y_start, y_end, m, c
+    )
+    draw_line(
+        canvas,
+        x_coordinates,
+        y_coordinates,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
+    )
 
 
 def main():
