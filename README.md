@@ -1,15 +1,8 @@
 # CL Calculator
 
-## NEXT
-* improve comments (cm)
-* extract hard codded values as parameters (cm)
-* evaluate and remove files from `tmp` directory (cm)
-* create a rudimentary cli user interface where you can ask the user either to go with defaults or modify particular values for testing purposes - this interface can be later replaced by tkinter actual interface
-
-## DONE
-* `scale.py` tests
-* github automated tests
-* test push
+## TODO
+- [x] extract hard codded values as parameters (cm)
+- [] evaluate and remove files from `tmp` directory  - if you want you can store them outside github e.g. create a folder on your google drive (cm)
 
 ## testing
 ```sh
