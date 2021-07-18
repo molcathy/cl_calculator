@@ -1,6 +1,9 @@
 from tkinter import Tk, Canvas, mainloop
 from scale import fixed_scale_values, y_scale, x_scale
 
+# TODO!
+# * comment functions
+
 
 def draw_lines(
     canvas,
@@ -17,7 +20,7 @@ def draw_lines(
     real_y_start,
     real_y_end,
 ):
-    """"""
+    """draw_lines <TAKES> <DOES>"""
     canvas.create_line(
         x_scale(x1, start_x_choice, end_x_choice, real_x_start, real_x_end),
         y_scale(y1, start_y_choice, end_y_choice, real_y_start, real_y_end),

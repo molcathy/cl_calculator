@@ -1,3 +1,13 @@
+#
+# TODO!
+# * replace 'choice' in variable names e.g. start_choice, ...
+# * replace 'real' in variable names e.g. real_difference, ...
+# * replace prepend functions name that return some values with get e.g. 'fixed_scale_values' -> 'get_fixed_scale_values'
+# * _unless have meaning from a math point of view_ replace variables names that do not say much with more meaningful ones e.g. m, c
+# * replace function comments with '<FUNCTION-NAME> <TAKES> <DOES> <RETURNS>'
+# * update the tests with the new function names
+
+
 def fixed_scale_values(start_choice, end_choice, real_start, real_end):
     """Figures out the gradient (m) and the y intercept (c)."""
     real_difference = real_end - real_start
@@ -29,7 +39,7 @@ def main():
     y_value = y_scale(3, -5, 5, 600, 100)
     x_value = x_scale(3, -5, 5, 100, 600)
 
-    print(f"fixed_scale_values: {gradient}, {y_intercept}")  # expected 100, 500
+    print(f"fixed_scale_values: {gradient}, {y_intercept}")
     print(f"y_scale: {y_value}")
     print(f"x_scale: {x_value}")
 
