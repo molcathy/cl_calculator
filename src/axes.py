@@ -7,7 +7,7 @@ def draw_lines(
     x1,
     x2,
     y1,
-    y2,````
+    y2,
     start_x_choice,
     end_x_choice,
     real_x_start,
