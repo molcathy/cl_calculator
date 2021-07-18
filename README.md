@@ -1,13 +1,8 @@
 # CL Calculator
 
-## NEXT
+## TODO
 - [x] extract hard codded values as parameters (cm)
 - [] evaluate and remove files from `tmp` directory  - if you want you can store them outside github e.g. create a folder on your google drive (cm)
-
-## DONE
-* `scale.py` tests
-* github automated tests
-* test push
 
 ## testing
 ```sh
