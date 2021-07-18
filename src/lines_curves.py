@@ -5,7 +5,6 @@ from scale import fixed_scale_values, y_scale, x_scale
 # * write proper comments by replacing <TAKES> <DOES> and <RETURNS> with actual comments
 # * implement tests for functions that preform the math:
 #   - get_coordinates()
-#   - get_line()
 
 
 def get_coordinates(x_start, x_end, y_start, y_end, equation):
@@ -38,7 +37,9 @@ def draw_power2_curve(
     x_coordinates,
     y_coordinates,
 ):
-    """draw_power2_curve  ... <TAKES> and <DOES>"""
+    """draw_power2_curve takes the x and y coordinates,
+    of the begining and end of the points on the curve,
+    from each list for the curve and draws them"""
     for i in range(0, len(y_coordinates) - 1):
         canvas.create_line(
             x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
@@ -63,7 +64,9 @@ def draw_line(
     y_tk_start,
     y_tk_end,
 ):
-    """draw_line  ... <TAKES> and <DOES>"""
+    """draw_line takes the x and y coordinates,
+    of the begining and end of the points on the line,
+    from each list and draws a line with them"""
     for i in range(0, len(y_coordinates) - 1):
         canvas.create_line(
             x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
@@ -89,7 +92,9 @@ def power2_curve(
     y_tk_start,
     y_tk_end,
 ):
-    """power2_curve ... <TAKES> <DOES> and <RETURNS>"""
+    """power2_curve uses the values of a quadratic curve,
+    calls a function to get the lists of x and y coordinates for the curve
+    and calls a function in order to draw a curve using that list"""
     x_coordinates, y_coordinates = get_coordinates(
         x_start,
         x_end,
@@ -125,7 +130,9 @@ def line(
     y_tk_start,
     y_tk_end,
 ):
-    """line ... <TAKES> <DOES> and <RETURNS>"""
+    """line uses the values of a line, calls a function
+    to get the lists of x and y coordinates for the line
+    and calls a function in order to draw a line using that list"""
     x_coordinates, y_coordinates = get_coordinates(
         x_start,
         x_end,
@@ -133,6 +140,8 @@ def line(
         y_end,
         equation=lambda x: x * m + c,
     )
+    print(x_coordinates)
+    print(y_coordinates)
     draw_line(
         canvas,
         x_coordinates,
