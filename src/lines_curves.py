@@ -1,11 +1,6 @@
 from tkinter import Tk, Canvas, mainloop
 from scale import fixed_scale_values, y_scale, x_scale
 
-# TODO!
-# * write proper comments by replacing <TAKES> <DOES> and <RETURNS> with actual comments
-# * implement tests for functions that preform the math:
-#   - get_coordinates()
-
 
 def get_coordinates(x_start, x_end, y_start, y_end, equation):
     """get_coordinates takes x and y starting and ending coordinates,
