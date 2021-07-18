@@ -4,6 +4,10 @@ sys.path.append("./src")
 from tkinter import Tk, Canvas, mainloop
 from src import axes, lines_curves
 
+# TODO!
+# -[] replace variables having 'real' in names as per already established standard
+# -[] replace variables having 'choice' in names as per already established standard
+
 
 def main():
     root = Tk()
