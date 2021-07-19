@@ -1,5 +1,5 @@
 from tkinter import Tk, Canvas, mainloop
-from scale import fixed_scale_values, y_scale, x_scale
+from scale import get_fixed_scale_values, get_y_scale, get_x_scale
 
 
 def get_coordinates(x_start, x_end, y_start, y_end, equation):
@@ -37,10 +37,10 @@ def draw_power2_curve(
     from each list for the curve and draws them"""
     for i in range(0, len(y_coordinates) - 1):
         canvas.create_line(
-            x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
-            y_scale(y_coordinates[i], y_start, y_end, y_tk_start, y_tk_end),
-            x_scale(x_coordinates[i + 1], x_start, x_end, x_tk_start, x_tk_end),
-            y_scale(y_coordinates[i + 1], y_start, y_end, y_tk_start, y_tk_end),
+            get_x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
+            get_y_scale(y_coordinates[i], y_start, y_end, y_tk_start, y_tk_end),
+            get_x_scale(x_coordinates[i + 1], x_start, x_end, x_tk_start, x_tk_end),
+            get_y_scale(y_coordinates[i + 1], y_start, y_end, y_tk_start, y_tk_end),
             width=2,
             fill="blue",
         )
@@ -64,10 +64,10 @@ def draw_line(
     from each list and draws a line with them"""
     for i in range(0, len(y_coordinates) - 1):
         canvas.create_line(
-            x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
-            y_scale(y_coordinates[i], y_start, y_end, y_tk_start, y_tk_end),
-            x_scale(x_coordinates[i + 1], x_start, x_end, x_tk_start, x_tk_end),
-            y_scale(y_coordinates[i + 1], y_start, y_end, y_tk_start, y_tk_end),
+            get_x_scale(x_coordinates[i], x_start, x_end, x_tk_start, x_tk_end),
+            get_y_scale(y_coordinates[i], y_start, y_end, y_tk_start, y_tk_end),
+            get_x_scale(x_coordinates[i + 1], x_start, x_end, x_tk_start, x_tk_end),
+            get_y_scale(y_coordinates[i + 1], y_start, y_end, y_tk_start, y_tk_end),
             width=2,
             fill="black",
         )

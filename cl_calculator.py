@@ -4,86 +4,82 @@ sys.path.append("./src")
 from tkinter import Tk, Canvas, mainloop
 from src import axes, lines_curves
 
-# TODO!
-# -[] replace variables having 'real' in names as per already established standard
-# -[] replace variables having 'choice' in names as per already established standard
-
 
 def main():
     root = Tk()
     canvas = Canvas(width=1000, height=1000, bg="lightblue")
     canvas.grid()
 
-    real_x_start = 100
-    real_x_end = 700
-    start_x_choice = -5
-    end_x_choice = 5
+    x_tk_start = 100
+    x_tk_end = 700
+    x_start = -5
+    x_end = 5
 
-    real_y_start = 100
-    real_y_end = 700
-    start_y_choice = -5
-    end_y_choice = 5
+    y_tk_start = 100
+    y_tk_end = 700
+    y_start = -5
+    y_end = 5
 
     axes.draw_lines(
         canvas,
-        start_x_choice,
-        end_x_choice,
+        x_start,
+        x_end,
         0,
         0,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
     axes.draw_lines(
         canvas,
         0,
         0,
-        start_y_choice,
-        end_y_choice,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        y_start,
+        y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
 
     axes.indent(
         canvas,
-        start_x_choice,
-        end_x_choice,
+        x_start,
+        x_end,
         0,
         0,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
     axes.indent(
         canvas,
         0,
         0,
-        start_y_choice,
-        end_y_choice,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        y_start,
+        y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
 
     lines_curves.power2_curve(
@@ -91,28 +87,28 @@ def main():
         3,
         4,
         2,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
 
     lines_curves.line(
         canvas,
         1,
         8,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
 
     mainloop()
