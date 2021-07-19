@@ -1,47 +1,42 @@
-#
-# TODO!
-# * replace 'choice' in variable names e.g. start_choice, ...
-# * replace 'real' in variable names e.g. real_difference, ...
-# * replace prepend functions name that return some values with get e.g. 'fixed_scale_values' -> 'get_fixed_scale_values'
-# * _unless have meaning from a math point of view_ replace variables names that do not say much with more meaningful ones e.g. m, c
-# * replace function comments with '<FUNCTION-NAME> <TAKES> <DOES> <RETURNS>'
-# * update the tests with the new function names
-
-
-def fixed_scale_values(start_choice, end_choice, real_start, real_end):
-    """Figures out the gradient (m) and the y intercept (c)."""
-    real_difference = real_end - real_start
-    choice_difference = end_choice - start_choice
-    m = real_difference / choice_difference
-    c = real_end - (end_choice * m)
+def get_fixed_scale_values(start, end, tk_start, tk_end):
+    """get_fixed_scale_values uses the equations of the start and end of the axis
+    (eg. start equation: tk_start = start * m + c, end equation: tk_end = end * + c),
+    then substitution is applied by subtracting each equation to figure out m,
+    then figuring out c with the m value. The result is the gradient(m) and the
+    x/y intercept (c)"""
+    tk_difference = tk_end - tk_start
+    difference = end - start
+    m = tk_difference / difference
+    c = tk_end - (end * m)
     return m, c
 
 
-def y_scale(y, start_y_choice, end_y_choice, real_y_start, real_y_end):
-    """Figures out the actual value of y, using the gradient and y
-    intercept, but also y * -1, because  it needs to start from the bottom as it goes upwards for a positive gradient."""
-    y_m, y_c = fixed_scale_values(
-        start_y_choice, end_y_choice, real_y_start, real_y_end
-    )
+def get_y_scale(y, y_start, y_end, y_tk_start, y_tk_end):
+    """get_y_scale uses the values of the y axis line to get
+    its gradient and y-intercept to apply to the user given
+    y co-ordinate, to scale it to the TKinter y co-ordinate
+    value"""
+    y_m, y_c = get_fixed_scale_values(y_start, y_end, y_tk_start, y_tk_end)
     return (y * -1) * y_m + y_c
 
 
-def x_scale(x, start_x_choice, end_x_choice, real_x_start, real_x_end):
-    """This figures out the actual value of x."""
-    x_m, x_c = fixed_scale_values(
-        start_x_choice, end_x_choice, real_x_start, real_x_end
-    )
+def get_x_scale(x, x_start, x_end, x_tk_start, x_tk_end):
+    """get_x_scale uses the values of the x axis line to get
+    its gradient and x-intercept to apply to the user given
+    x co-ordinate, to scale it to the TKinter x co-ordinate
+    value"""
+    x_m, x_c = get_fixed_scale_values(x_start, x_end, x_tk_start, x_tk_end)
     return x * x_m + x_c
 
 
 def main():
-    gradient, y_intercept = fixed_scale_values(-4, 4, 100, 900)
-    y_value = y_scale(3, -5, 5, 600, 100)
-    x_value = x_scale(3, -5, 5, 100, 600)
+    gradient, y_intercept = get_fixed_scale_values(-4, 4, 100, 900)
+    y_value = get_y_scale(3, -5, 5, 600, 100)
+    x_value = get_x_scale(3, -5, 5, 100, 600)
 
-    print(f"fixed_scale_values: {gradient}, {y_intercept}")
-    print(f"y_scale: {y_value}")
-    print(f"x_scale: {x_value}")
+    print(f"get_fixed_scale_values: {gradient}, {y_intercept}")
+    print(f"get_y_scale: {y_value}")
+    print(f"get_x_scale: {x_value}")
 
 
 if __name__ == "__main__":

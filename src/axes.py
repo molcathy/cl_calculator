@@ -1,8 +1,5 @@
 from tkinter import Tk, Canvas, mainloop
-from scale import fixed_scale_values, y_scale, x_scale
-
-# TODO!
-# * comment functions
+from scale import get_fixed_scale_values, get_y_scale, get_x_scale
 
 
 def draw_lines(
@@ -11,21 +8,26 @@ def draw_lines(
     x2,
     y1,
     y2,
-    start_x_choice,
-    end_x_choice,
-    real_x_start,
-    real_x_end,
-    start_y_choice,
-    end_y_choice,
-    real_y_start,
-    real_y_end,
+    x_start,
+    x_end,
+    x_tk_start,
+    x_tk_end,
+    y_start,
+    y_end,
+    y_tk_start,
+    y_tk_end,
 ):
-    """draw_lines <TAKES> <DOES>"""
+    """draw_lines takes the values of the x and y axes
+    getting the values of each axes by having the the start
+    and end values then draws the line."""
+
+    # I would like to create an if statement with the user picking to draw the x/y axis
+
     canvas.create_line(
-        x_scale(x1, start_x_choice, end_x_choice, real_x_start, real_x_end),
-        y_scale(y1, start_y_choice, end_y_choice, real_y_start, real_y_end),
-        x_scale(x2, start_x_choice, end_x_choice, real_x_start, real_x_end),
-        y_scale(y2, start_y_choice, end_y_choice, real_y_start, real_y_end),
+        get_x_scale(x1, x_start, x_end, x_tk_start, x_tk_end),
+        get_y_scale(y1, y_start, y_end, y_tk_start, y_tk_end),
+        get_x_scale(x2, x_start, x_end, x_tk_start, x_tk_end),
+        get_y_scale(y2, y_start, y_end, y_tk_start, y_tk_end),
         width=2,
         fill="green",
     )
@@ -37,16 +39,20 @@ def indent(
     x2,
     y1,
     y2,
-    start_x_choice,
-    end_x_choice,
-    real_x_start,
-    real_x_end,
-    start_y_choice,
-    end_y_choice,
-    real_y_start,
-    real_y_end,
+    x_start,
+    x_end,
+    x_tk_start,
+    x_tk_end,
+    y_start,
+    y_end,
+    y_tk_start,
+    y_tk_end,
 ):
-    """This creates indentations along the x and y axis lines with the values of the indents."""
+    """indent takes in the values of the axis, figuring
+    out wether its a y or x axis then drawing indents
+    along said axis at intervals as well as stating
+    the current values underneath"""
+
     if int(y1) == 0:
         for x in range(x1, (x2 + 1)):
             draw_lines(
@@ -55,18 +61,20 @@ def indent(
                 x,
                 0,
                 -0.3,
-                start_x_choice,
-                end_x_choice,
-                real_x_start,
-                real_x_end,
-                start_y_choice,
-                end_y_choice,
-                real_y_start,
-                real_y_end,
+                x_start,
+                x_end,
+                x_tk_start,
+                x_tk_end,
+                y_start,
+                y_end,
+                y_tk_start,
+                y_tk_end,
             )
             canvas.create_text(
-                x_scale(x, start_x_choice, end_x_choice, real_x_start, real_x_end),
-                y_scale(-0.5, start_y_choice, end_y_choice, real_y_start, real_y_end),
+                get_x_scale(x, x_start, x_end, x_tk_start, x_tk_end),
+                get_y_scale(
+                    -0.5, y_start, y_end, y_tk_start, y_tk_end
+                ),
                 text=str(x),
                 fill="green",
             )
@@ -79,18 +87,18 @@ def indent(
                 -0.15,
                 y,
                 y,
-                start_x_choice,
-                end_x_choice,
-                real_x_start,
-                real_x_end,
-                start_y_choice,
-                end_y_choice,
-                real_y_start,
-                real_y_end,
+                x_start,
+                x_end,
+                x_tk_start,
+                x_tk_end,
+                y_start,
+                y_end,
+                y_tk_start,
+                y_tk_end,
             )
             canvas.create_text(
-                x_scale(-0.5, start_x_choice, end_x_choice, real_x_start, real_x_end),
-                y_scale(y, start_y_choice, end_y_choice, real_y_start, real_y_end),
+                get_x_scale(-0.5, x_start, x_end, x_tk_start, x_tk_end),
+                get_y_scale(y, y_start, y_end, y_tk_start, y_tk_end),
                 text=str(y),
                 fill="green",
             )
@@ -101,76 +109,76 @@ def main():
     canvas = Canvas(width=1000, height=1000, bg="lightblue")
     canvas.grid()
 
-    real_x_start = 100
-    real_x_end = 700
-    start_x_choice = -5
-    end_x_choice = 5
+    x_tk_start = 100
+    x_tk_end = 700
+    x_start = -5
+    x_end = 5
 
-    real_y_start = 100
-    real_y_end = 700
-    start_y_choice = -5
-    end_y_choice = 5
+    y_tk_start = 100
+    y_tk_end = 700
+    y_start = -5
+    y_end = 5
 
     draw_lines(
         canvas,
-        start_x_choice,
-        end_x_choice,
+        x_start,
+        x_end,
         0,
         0,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
     draw_lines(
         canvas,
         0,
         0,
-        start_y_choice,
-        end_y_choice,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        y_start,
+        y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
 
     indent(
         canvas,
-        start_x_choice,
-        end_x_choice,
+        x_start,
+        x_end,
         0,
         0,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
     indent(
         canvas,
         0,
         0,
-        start_y_choice,
-        end_y_choice,
-        start_x_choice,
-        end_x_choice,
-        real_x_start,
-        real_x_end,
-        start_y_choice,
-        end_y_choice,
-        real_y_start,
-        real_y_end,
+        y_start,
+        y_end,
+        x_start,
+        x_end,
+        x_tk_start,
+        x_tk_end,
+        y_start,
+        y_end,
+        y_tk_start,
+        y_tk_end,
     )
     mainloop()
 
