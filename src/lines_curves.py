@@ -135,8 +135,6 @@ def line(
         y_end,
         equation=lambda x: x * m + c,
     )
-    print(x_coordinates)
-    print(y_coordinates)
     draw_line(
         canvas,
         x_coordinates,
