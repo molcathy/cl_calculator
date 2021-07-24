@@ -1,13 +1,9 @@
 # CL Calculator
 
 ## TODO
-- [] evaluate and remove files from `tmp` directory  - if you want you can store them outside github e.g. create a folder on your google drive (cm)
+- []
 
-## testing
-```sh
-## execute tests
-pytest -v src/
-```
+
 
 ## Contributing to the project
 Prep steps:
@@ -39,6 +35,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 #4. implement changes
+
+#5. TEST
+pytest -v src/
 
 #5. add, commit, push, create a pull request, merge
 ```
