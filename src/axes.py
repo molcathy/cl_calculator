@@ -21,8 +21,6 @@ def draw_lines(
     getting the values of each axes by having the the start
     and end values then draws the line."""
 
-    # I would like to create an if statement with the user picking to draw the x/y axis
-
     canvas.create_line(
         get_x_scale(x1, x_start, x_end, x_tk_start, x_tk_end),
         get_y_scale(y1, y_start, y_end, y_tk_start, y_tk_end),
@@ -72,9 +70,7 @@ def indent(
             )
             canvas.create_text(
                 get_x_scale(x, x_start, x_end, x_tk_start, x_tk_end),
-                get_y_scale(
-                    -0.5, y_start, y_end, y_tk_start, y_tk_end
-                ),
+                get_y_scale(-0.5, y_start, y_end, y_tk_start, y_tk_end),
                 text=str(x),
                 fill="green",
             )
