@@ -1,6 +1,8 @@
 # TODO:
 # * comment function
 # * establish if formula I used in `main` & tests is mathematically valid; if not replace it
+# * latter implement user input validation checks e.g check for non alphanumeric characters, make sure string contains x
+# * sanitize data before processing e.g.: lower case anything
 # * for each token evaluate the value of its components:
 #   - the constant (e.g. a)
 #   - the power of x
