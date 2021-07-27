@@ -1,11 +1,12 @@
 # CL Calculator
 
-## TODO
+## Current Problem
+- [] there is no actual 0 in the list of coordinates
+
+## NEXT
 - [] Doing a graph to any power
 - [] Finding where the x-intersect is
 - [] Finding where the y-intersect is
-# --- current problem -- #
-there is no actual 0 in the list of coordinates
 
 ## Contributing to the project
 Prep steps:
