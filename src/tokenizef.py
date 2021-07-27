@@ -32,10 +32,8 @@ def get_tokens(formula):
                 tokenized.append(token)
             else:
                 tokenized.append("+" + token)
-        elif token == "+":
-            sign = "+"
-        elif token == "-":
-            sign = "-"
+        elif token == "+" or token == "-":
+            sign = token
         elif token[0] == "+" or token[0] == "-":
             tokenized.append(token)
         else:
