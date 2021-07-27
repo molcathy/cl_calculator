@@ -25,19 +25,12 @@ def get_tokens(formula):
     tokens = formula.split(" ")
 
     for token in tokens:
-        if tokens.index(token) == 0:
-            if token == "+" or token == "-":
-                sign = token
-            elif token[0] == "+" or token[0] == "-":
-                tokenized.append(token)
-            else:
-                tokenized.append("+" + token)
-        elif token == "+":
-            sign = "+"
-        elif token == "-":
-            sign = "-"
+        if token == "+" or token == "-":
+            sign = token
         elif token[0] == "+" or token[0] == "-":
             tokenized.append(token)
+        elif tokens.index(token) == 0:
+            tokenized.append("+" + token)
         else:
             tokenized.append(sign + token)
 
@@ -45,7 +38,7 @@ def get_tokens(formula):
 
 
 def main():
-    formula = "5x^3 + 4x^2 - 4x - 4"
+    formula = "+ 5x^3 + 4x^2 - 4x - 4"
     print(formula)
     print(get_tokens(formula))
 
