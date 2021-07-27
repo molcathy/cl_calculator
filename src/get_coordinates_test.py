@@ -1,5 +1,5 @@
 import pytest
-import lines_curves
+import get_coordinates
 
 
 def test_get_coordinates():
@@ -9,7 +9,7 @@ def test_get_coordinates():
     m = 1
     c_line = 8
 
-    assert lines_curves.get_coordinates(
+    assert get_coordinates.get_coordinates(
         -5,
         5,
         -5,
@@ -501,7 +501,7 @@ def test_get_coordinates():
             4.962699999999555,
         ],
     )
-    assert lines_curves.get_coordinates(
+    assert get_coordinates.get_coordinates(
         -5,
         5,
         -5,
