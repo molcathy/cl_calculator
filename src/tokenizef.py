@@ -12,9 +12,6 @@ ax^2 + ... + bx + c = 0 # can it have multiple (undetermined ) tokens/members at
 """Asking about direction what I plan to do after I finish this problem"""
 
 
-from tkinter import constants
-
-
 def contains_number(s):
     """contains_numbers checks wether the argument is a number or not"""
     try:
