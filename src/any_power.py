@@ -16,7 +16,9 @@ def draw_polynomial(
     x_coordinates,
     y_coordinates,
 ):
-    """write comment again"""
+    """draw_polynomial draws the the polynomial with the coordinates
+    given, and makes sure that the same line that goes outside of the
+    graph isn't connected by a line at the end of the graph"""
     for i in range(0, len(y_coordinates) - 1):
         if x_coordinates[i + 1] - x_coordinates[i] < 0.02:
             canvas.create_line(
@@ -41,7 +43,7 @@ def polynomial(
     y_tk_start,
     y_tk_end,
 ):
-    """write comment again"""
+    """polynomial gets the the coordinates of the polynomial and draws it"""
     x_coordinates, y_coordinates = get_coordinates(
         x_start,
         x_end,
