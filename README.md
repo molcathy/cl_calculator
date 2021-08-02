@@ -1,10 +1,10 @@
 # CL Calculator
 
 ## Current Problem
-- [] there is no actual 0 in the list of coordinates
+- [] finding out the x intersect of a graph based on power
 
 ## NEXT
-- [] Doing a graph to any power
+- [x] Doing a graph to any power
 - [] Finding where the x-intersect is
 - [] Finding where the y-intersect is
 
@@ -69,7 +69,7 @@ pytest -v src/
     10.	Where graphs intersect []
     11.	Where the y-intersect is []
     12.	Where the x-intersect is []
-    13.	Doing a graph to any power []
+    13.	Doing a graph to any power [x]
     14.	Drawing a graph with a positive or negative gradient [x]
     15.	Scaling the graph to fit the space given
     16.	Only allowing the values to be drawn that are inside the graph [x]
