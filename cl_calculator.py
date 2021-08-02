@@ -2,7 +2,7 @@ import sys
 
 sys.path.append("./src")
 from tkinter import Tk, Canvas, mainloop
-from src import axes, lines_curves
+from src import axes, any_power
 
 
 def main():
@@ -20,6 +20,8 @@ def main():
     y_start = -5
     y_end = 5
 
+    formula = "3x^3 + 4x^2 - 5x - 6"
+
     axes.draw_lines(
         canvas,
         x_start,
@@ -82,25 +84,9 @@ def main():
         y_tk_end,
     )
 
-    lines_curves.power2_curve(
+    any_power.polynomial(
         canvas,
-        3,
-        4,
-        2,
-        x_start,
-        x_end,
-        x_tk_start,
-        x_tk_end,
-        y_start,
-        y_end,
-        y_tk_start,
-        y_tk_end,
-    )
-
-    lines_curves.line(
-        canvas,
-        1,
-        8,
+        formula,
         x_start,
         x_end,
         x_tk_start,

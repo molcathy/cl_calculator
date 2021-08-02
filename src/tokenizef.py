@@ -21,6 +21,17 @@ ax^2 + ... + bx + c = 0 # can it have multiple (undetermined ) tokens/members at
 """Asking about direction what I plan to do after I finish this problem"""
 
 
+from tkinter import constants
+
+
+def contains_number(s):
+    try:
+        float(s)
+        return True
+    except:
+        return False
+
+
 def get_tokens(formula):
     tokenized = []
     tokens = formula.split(" ")
@@ -45,7 +56,7 @@ def get_constant_power(tokens):
     for token in tokens:
         if "x" in token:
             temp = token.split("x")
-            if "0123456789" in temp[0]:
+            if contains_number(temp[0]):
                 constants.append(float(temp[0]))
             elif "+" in temp[0]:
                 constants.append(1)
@@ -54,21 +65,38 @@ def get_constant_power(tokens):
 
             if "^" in temp[1]:
                 temp2 = temp[1].split("^")
-                if "0123456789" in temp2[1]:
+                if contains_number(temp2[1]):
                     powers.append(float(temp2[1]))
-        elif "0123456789" in temp:
-            constants.append(float(temp))
+            else:
+                powers.append(1)
+        elif contains_number(token):
+            constants.append(float(token))
+            powers.append(0)
 
     return constants, powers
 
 
+def equation(constants, powers, x):
+    y = 0
+    for constant in range(0, len(constants)):
+        c = constants[constant]
+        p = powers[constant]
+        y += c * (x ** p)
+
+    return y
+
+
 def main():
     formula = "5x^3 + 4x^2 - 4x - 4"
+
     tokens = get_tokens(formula)
+    constants, powers = get_constant_power(tokens)
+    y = equation(constants, powers, 1)
 
     print(formula)
     print(get_tokens(formula))
     print(get_constant_power(tokens))
+    print(y)
 
 
 if __name__ == "__main__":
