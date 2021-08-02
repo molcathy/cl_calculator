@@ -1,12 +1,3 @@
-# TODO:
-# * comment function
-# * establish if formula I used in `main` & tests is mathematically valid; if not replace it
-# * latter implement user input validation checks e.g check for non alphanumeric characters, make sure string contains x
-# * sanitize data before processing e.g.: lower case anything
-# * for each token evaluate the value of its components:
-#   - the constant (e.g. a)
-#   - the powers of x
-# * implement quadratic formula
 """
 x = -b + math.sqrt(b^2 - 4ac) / 2a
 x = -b - math.sqrt(b^2 - 4ac) / 2a
@@ -25,6 +16,7 @@ from tkinter import constants
 
 
 def contains_number(s):
+    """contains_numbers checks wether the argument is a number or not"""
     try:
         float(s)
         return True
@@ -33,6 +25,7 @@ def contains_number(s):
 
 
 def get_tokens(formula):
+    """get_tokens puts the sign + or - next to the token"""
     tokenized = []
     tokens = formula.split(" ")
 
@@ -50,6 +43,8 @@ def get_tokens(formula):
 
 
 def get_constant_power(tokens):
+    """get_constant_power puts the powers and constant
+    of each token into a list and return them"""
     constants = []
     powers = []
 
@@ -77,6 +72,8 @@ def get_constant_power(tokens):
 
 
 def equation(constants, powers, x):
+    """equation gets each constant and power from the
+    lists as well as the x value to get the y value"""
     y = 0
     for constant in range(0, len(constants)):
         c = constants[constant]
