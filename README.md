@@ -2,11 +2,15 @@
 
 ## Current Problem
 - [] finding out the x intersect of a graph based on power
+- [] finding out the gradient regardless of the power of x
+- Should I focus on doing something for a quadratic rather than focusing first on any power of x?
 
 ## NEXT
-- [x] Doing a graph to any power
 - [] Finding where the x-intersect is
 - [] Finding where the y-intersect is
+- [] Figuring out the tangent
+- [] Figuring out the normal
+- [] Figuring out the perpendicular bisector
 
 ## Contributing to the project
 Prep steps:
