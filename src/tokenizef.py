@@ -68,16 +68,20 @@ def get_constant_power(tokens):
     return constants, powers
 
 
-def equation(constants, powers, x):
+def generate_equation(constants, powers):
     """equation gets each constant and power from the
     lists as well as the x value to get the y value"""
-    y = 0
-    for constant in range(0, len(constants)):
-        c = constants[constant]
-        p = powers[constant]
-        y += c * (x ** p)
 
-    return y
+    def equation(x):
+        y = 0
+        for constant in range(0, len(constants)):
+            c = constants[constant]
+            p = powers[constant]
+            y += c * (x ** p)
+
+        return y
+
+    return equation
 
 
 def main():
@@ -85,7 +89,9 @@ def main():
 
     tokens = get_tokens(formula)
     constants, powers = get_constant_power(tokens)
-    y = equation(constants, powers, 1)
+
+    fx = generate_equation(constants, powers)
+    fx(1)
 
     print(formula)
     print(get_tokens(formula))

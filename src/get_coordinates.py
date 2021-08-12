@@ -21,6 +21,9 @@ def get_coordinates(x_start, x_end, y_start, y_end, formula):
     return x_coordinates, y_coordinates
 
 
+"""get a function to get coordinates where y is close to 0 and then get the corresponding x coordinates"""
+
+
 def main():
     pass
 

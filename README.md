@@ -61,8 +61,8 @@ pytest -v src/
     7.	Picking a point to show the coordinates of []
     8.	Saving a graph []
 3.	To apply formulas on the equation that the computer understands such as:
-    1.	Integration []
-    2.	Differentiation []
+    1.	Integration [x]
+    2.	Differentiation [x]
     3.	Area underneath a graph []
     4.	Displaying a point on the graph []
     5.	Figuring out the tangent []
