@@ -1,16 +1,20 @@
 # CL Calculator
 
 ## Current Problem
-- [] finding out the x intersect of a graph based on power
-- [] finding out the gradient regardless of the power of x
-- Should I focus on doing something for a quadratic rather than focusing first on any power of x?
-
+- [] getting the asymptote - is it ok to have negative powers written in for standard form
+"""
+example code
+"""
 ## NEXT
-- [] Finding where the x-intersect is
-- [] Finding where the y-intersect is
-- [] Figuring out the tangent
-- [] Figuring out the normal
-- [] Figuring out the perpendicular bisector
+### This Week
+- [x] finding the minimum and maximum turning point for a power of 3 graph
+- [x] Area underneath a graph
+- [] figuring out the asymptote
+
+### Next Week
+- [] Saving a graph, as many as you want as text files -- not yet
+- [] Saving up to five graphs in the program itself
+- [] finding out where multiple graphs intersect
 
 ## Contributing to the project
 Prep steps:
@@ -63,19 +67,19 @@ pytest -v src/
 3.	To apply formulas on the equation that the computer understands such as:
     1.	Integration [x]
     2.	Differentiation [x]
-    3.	Area underneath a graph []
-    4.	Displaying a point on the graph []
-    5.	Figuring out the tangent []
-    6.	Figuring out the normal []
-    7.	Figuring out the perpendicular bisector []
-    8.	Figuring out the minimum and maximum (or there might be a minimum turning point and a maximum turning point depending on the graph) []
+    3.	Area underneath a graph [x]
+    4.	Displaying a point on the graph [] not sure about this
+    5.	Figuring out the tangent [x]
+    6.	Figuring out the normal [x]
+    7.	Figuring out the perpendicular bisector [x]
+    8.	Figuring out the minimum and maximum (or there might be a minimum turning point and a maximum turning point depending on the graph) [x]
     9.	Figuring out the asymptote []
     10.	Where graphs intersect []
-    11.	Where the y-intersect is []
-    12.	Where the x-intersect is []
+    11.	Where the y-intersect is [x]
+    12.	Where the x-intersect is [x]
     13.	Doing a graph to any power [x]
     14.	Drawing a graph with a positive or negative gradient [x]
-    15.	Scaling the graph to fit the space given
+    15.	Scaling the graph to fit the space given []
     16.	Only allowing the values to be drawn that are inside the graph [x]
 4.	To clear the screen []
 5.	To have a screen where you can save and upload polynomials and equations of a line so that the user can pull it up and use it again. []

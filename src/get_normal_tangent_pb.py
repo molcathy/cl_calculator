@@ -8,9 +8,11 @@ def get_highest_power(powers):
         if highest < powers[p]:
             highest = powers[p]
 
+    return highest
+
 
 def line_yintercept(m, x, y):
-    yintercept = (m * (-1 * x)) - y
+    yintercept = (m * (-1 * x)) + y
     return yintercept
 
 
@@ -20,16 +22,16 @@ def get_tangent(powers, constants, x, y):
         m_constants,
         m_powers,
     )
-    t_m(x)
-    yintercept = line_yintercept(t_m, x, y)
+    m = t_m(x)
+    yintercept = line_yintercept(m, x, y)
 
-    t_constants = [t_m, yintercept]
+    t_constants = [m, yintercept]
     t_powers = [1, 0]
-    return t_m, t_constants, t_powers
+    return m, t_constants, t_powers
 
 
 def get_normal(powers, constants, x, y):
-    t_m, m_constants, m_powers = get_tangent(powers, constants, x)
+    t_m, m_constants, m_powers = get_tangent(powers, constants, x, y)
     n_m = (t_m ** -1) * -1
     yintercept = line_yintercept(n_m, x, y)
 
@@ -39,8 +41,8 @@ def get_normal(powers, constants, x, y):
 
 
 def get_pb(powers, constants, startx, starty, endx, endy):
-    mid_x = (endx - startx) / 2
-    mid_y = (starty - endy) / 2
+    mid_x = (endx + startx) / 2
+    mid_y = (starty + endy) / 2
     pb_constants, pb_powers = get_normal(powers, constants, mid_x, mid_y)
 
     return pb_constants, pb_powers

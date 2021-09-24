@@ -77,11 +77,51 @@ def generate_equation(constants, powers):
         for constant in range(0, len(constants)):
             c = constants[constant]
             p = powers[constant]
-            y += c * (x ** p)
+
+            if p == 0:
+                y += c
+            else:
+                if x == 0 and p < 0:
+                    y += 0
+                else:
+                    y += c * (x ** p)
 
         return y
 
     return equation
+
+
+def string_constant_power(constants, powers):
+    formula = ""
+
+    for p in range(0, len(powers)):
+        if p == 0:
+            if powers[p] == 0:
+                formula += str(constants[p])
+            elif constants[p] == 1 and powers[p] != 0:
+                formula = "x" + "^" + str(powers[p])
+            elif constants[p] == -1 and powers[p] != 0:
+                formula = "-x" + "^" + str(powers[p])
+            else:
+                formula += str(constants[p]) + "^" + str(powers[p])
+        elif constants[p] == 1 and powers[p] != 0:
+            formula = " " + "+" + " " + "x" + "^" + str(powers[p])
+        elif constants[p] == -1 and powers[p] != 0:
+            formula = " " + "-" + " " + "x" + "^" + str(powers[p])
+        else:
+            if constants[p] < 0:
+                tempstr1 = str(constants[p])[0]
+                tempstr2 = str(constants[p])[1]
+                formula += " " + tempstr1 + " " + tempstr2
+                if powers[p] != 0:
+                    formula += "x" + "^" + str(powers[p])
+            elif constants[p] > 0:
+                formula += " " + "+" + " " + str(constants[p])
+                if powers[p] != 0 and powers[p] != 1:
+                    formula += "x" + "^" + str(powers[p])
+                elif powers[p] == 1:
+                    formula += "x"
+    return formula
 
 
 def main():
@@ -91,7 +131,7 @@ def main():
     constants, powers = get_constant_power(tokens)
 
     fx = generate_equation(constants, powers)
-    fx(1)
+    y = fx(1)
 
     print(formula)
     print(get_tokens(formula))

@@ -29,7 +29,18 @@ def integration(powers, constants):
 
 
 def main():
-    pass
+    from tokenizef import get_constant_power, get_tokens, generate_equation
+
+    formula = "3x^2 + 4x + 2"
+    tokens = get_tokens(formula)
+    constants, powers = get_constant_power(tokens)
+
+    dif_constant, dif_powers = differentiation(powers, constants)
+    int_constant, int_powers = integration(powers, constants)
+
+    print("Normal consant and powers: ", constants, powers)
+    print("Differentiatied constants and powers: ", dif_constant, dif_powers)
+    print("Integrated constants and powers: ", int_constant, int_powers)
 
 
 if __name__ == "__main__":
