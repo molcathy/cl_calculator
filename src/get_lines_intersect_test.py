@@ -37,4 +37,4 @@ def test_get_intersect():
 
     assert get_lines_intersect.get_intersect(
         p1, c1, p2, c2, x_start, x_end, y_start, y_end
-    ) == [10], [27]
+    ) == ([10], [27])
