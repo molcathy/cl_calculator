@@ -6,10 +6,9 @@ def test_max_or_min():
     constants = [2, -5, -4, 2]
     powers = [3, 2, 1, 0]
     tp_x = 2
-    constants2 = [1, 4, 4]
-    powers = [2, 1, 0]
+    tp_x2 = -(1 / 3)
     assert get_tp_area_as.max_or_min(constants, powers, tp_x) == False
-    assert get_tp_area_as.max_or_min(constants, powers, -(1 / 3)) == True
+    assert get_tp_area_as.max_or_min(constants, powers, tp_x2) == True
 
 
 def test_complete_the_square():

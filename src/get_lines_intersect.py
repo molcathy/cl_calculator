@@ -82,8 +82,12 @@ def get_intersect(p1, c1, p2, c2, x_start, x_end, y_start, y_end):
 
     y_coordinates = []
     for x in x_intercept:
-        fx = generate_equation(p3, c3)
+        fx = generate_equation(c1, p1)
         y_coordinates.append(fx(x))
+
+    for i in range(0, len(x_intercept)):
+        x_intercept[i] = round(x_intercept[i], 3)
+        y_coordinates[i] = round(y_coordinates[i], 3)
 
     return x_intercept, y_coordinates
     # get code from the get_intercept module

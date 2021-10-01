@@ -25,8 +25,6 @@ def max_or_min(constants, powers, tp_x):
 
     if max_min > 0:
         max = False
-    elif max_min < 0:
-        max = True
 
     return max
 
