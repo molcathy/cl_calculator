@@ -7,6 +7,8 @@ class MainWindow(Frame):
         Frame.__init__(self, parent)
         self.parent = parent
 
+        self.extra_inputs = []
+
         btnIntegration = Button(self, text="Integrate", command=self.Integration)
         btnDifferentiation = Button(
             self, text="Differentiate", command=self.Differentiation
@@ -41,13 +43,10 @@ class MainWindow(Frame):
 
         btn_showGraph.grid()
 
-        self.pEntry1 = Entry(self)
-        self.pEntry2 = Entry(self)
         self.formulaEntry = Entry(self)
 
         self.formulaEntry.grid()
-        self.pEntry1.grid()
-        self.pEntry2.grid()
+        self.create_extra_inputs(3)
         self.lblAnswer.grid()
 
         btnIntegration.grid()
@@ -63,6 +62,16 @@ class MainWindow(Frame):
         btnAsymptote.grid()
         btnLinesIntersect.grid()
         btn_delete_answer.grid()
+
+    def create_extra_inputs(self, num_imputs):
+        for e in self.extra_inputs:
+            e.grid_forget()
+
+        self.extra_inputs = []
+        for i in range(num_imputs):
+            extra_input = Entry(self)
+            extra_input.grid()
+            self.extra_inputs.append(extra_input)
 
     def show_answer(self, answer):
         self.lblAnswer = self.lblAnswer.config(text=answer)
@@ -124,8 +133,9 @@ class MainWindow(Frame):
         )
 
         formulaText = self.formulaEntry.get()
-        x_start = float(self.pEntry1.get())
-        x_end = float(self.pEntry2.get())
+        self.create_extra_inputs(2)
+        x_start = float(self.extra_inputs[0].get())
+        x_end = float(self.extra_inputs[1].get())
         constants, powers = get_constant_power(get_tokens(formulaText))
         area = get_area(powers, constants, x_start, x_end)
         self.show_answer(str(area))

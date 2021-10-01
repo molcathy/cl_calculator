@@ -103,7 +103,7 @@ def string_constant_power(constants, powers):
             elif constants[p] == -1 and powers[p] != 0:
                 formula = "-x" + "^" + str(powers[p])
             else:
-                formula += str(constants[p]) + "^" + str(powers[p])
+                formula += str(constants[p]) + "x^" + str(powers[p])
         elif constants[p] == 1 and powers[p] != 0:
             formula = " " + "+" + " " + "x" + "^" + str(powers[p])
         elif constants[p] == -1 and powers[p] != 0:

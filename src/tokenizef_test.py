@@ -52,7 +52,7 @@ def test_get_tokens_no_spaces():
 
 
 def test_string_constant_power():
-    assert tokenizef.string_constant_power([3, 4, -2], [2, 1, 0]) == ("3^2 + 4x - 2")
+    assert tokenizef.string_constant_power([3, 4, -2], [2, 1, 0]) == ("3x^2 + 4x - 2")
 
 
 def test_generate_equation():
