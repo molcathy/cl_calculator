@@ -1,4 +1,4 @@
-from tokenizef import get_tokens, get_constant_power, equation
+from tokenizef import get_tokens, get_constant_power, generate_equation
 
 
 def get_coordinates(x_start, x_end, y_start, y_end, formula):
@@ -12,7 +12,8 @@ def get_coordinates(x_start, x_end, y_start, y_end, formula):
     constants, powers = get_constant_power(tokens)
     while x_start <= x_end:
         # maybe y must be replaced with what actually the equation does to x_start
-        y = equation(constants, powers, x_start)
+        fx = generate_equation(constants, powers)
+        y = fx(x_start)
         if y >= y_start and y <= y_end:
             x_coordinates.append(x_start)
             y_coordinates.append(y)
@@ -22,7 +23,12 @@ def get_coordinates(x_start, x_end, y_start, y_end, formula):
 
 
 def main():
-    pass
+    formula = "3x^2 + 4x + 2"
+    x, y = get_coordinates(-5, 5, -5, 5, formula)
+    x.sort()
+    y.sort()
+    print(f"x start: {round(x[0], 3)}, x end: {round(x[-1], 3)}")
+    print(f"y start: {round(y[0], 3)}, y end: {round(y[-1], 3)}")
 
 
 if __name__ == "__main__":

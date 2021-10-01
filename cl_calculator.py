@@ -20,7 +20,7 @@ def main():
     y_start = -5
     y_end = 5
 
-    formula = "3x^3 + 4x^2 - 5x - 6"
+    formula = "50x - 90"
 
     axes.draw_lines(
         canvas,
