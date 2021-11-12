@@ -111,7 +111,7 @@ def string_constant_power(constants, powers):
         else:
             if constants[p] < 0:
                 tempstr1 = str(constants[p])[0]
-                tempstr2 = str(constants[p])[1]
+                tempstr2 = str(constants[p])[1:]
                 formula += " " + tempstr1 + " " + tempstr2
                 if powers[p] != 0:
                     formula += "x" + "^" + str(powers[p])

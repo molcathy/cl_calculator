@@ -56,11 +56,11 @@ def test_get_x_y_intercept():
     line_intercept_y, line_intercept_x = get_intercept.get_x_y_intercept(
         [2, 4], [1, 0], x_start, x_end, y_start, y_end, "2x + 4"
     )
-    assert line_intercept_y == 4
+    assert line_intercept_y == [4]
     assert line_intercept_x == [-2]
 
     quadratic_intercept_y, quadratic_intercept_x = get_intercept.get_x_y_intercept(
         constants, powers, x_start, x_end, y_start, y_end, formula
     )
-    assert quadratic_intercept_y == 4
+    assert quadratic_intercept_y == [4]
     assert quadratic_intercept_x == [-2, -2]

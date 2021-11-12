@@ -12,17 +12,35 @@ from tokenizef import get_tokens, get_constant_power, generate_equation
 from integration_differentiation import differentiation, integration
 import math
 
+"""
+Return false for the quadratic if it doesn't intercept the x axis
+"""
+
 
 def quadratic_roots(constants):
-    x1 = (
-        -constants[1]
-        + math.sqrt((constants[1] ** 2) - (4 * constants[0] * constants[2]))
-    ) / (2 * constants[0])
-    x2 = (
-        -constants[1]
-        - math.sqrt((constants[1] ** 2) - (4 * constants[0] * constants[2]))
-    ) / (2 * constants[0])
-    return x1, x2
+    val1 = (constants[1] ** 2) - (4 * constants[0] * constants[2])
+    val2 = (constants[1] ** 2) - (4 * constants[0] * constants[2])
+    x1 = 0
+    x2 = 0
+    value = True
+
+    try:
+        x1 = (
+            -constants[1]
+            + math.sqrt((constants[1] ** 2) - (4 * constants[0] * constants[2]))
+        ) / (2 * constants[0])
+    except ValueError:
+        value = False
+
+    try:
+        x2 = (
+            -constants[1]
+            - math.sqrt((constants[1] ** 2) - (4 * constants[0] * constants[2]))
+        ) / (2 * constants[0])
+    except ValueError:
+        value = False
+
+    return x1, x2, value
 
 
 def smallest_x_intercept(x_start, x_end, y_start, y_end, formula):
@@ -69,15 +87,27 @@ def newton_raphson_approximation(constants, powers, x, tol=0.0000000000001):
 
 
 def get_x_y_intercept(constants, powers, x_start, x_end, y_start, y_end, formula):
+    """
+    Figure out what to do when there is not intercept
+    """
+    yvalue = True
+    xvalue = True
     fx = generate_equation(constants, powers)
-    y_intercept = fx(0)
+    try:
+        y_intercept = [fx(0)]
+    except ValueError:
+        yvalue = False
+
     x_intercept = []
     if get_highest_power(powers) == 1:
         x_intercept.append((constants[1] * -1) / constants[0])
 
     elif get_highest_power(powers) == 2:
-        x1, x2 = quadratic_roots(constants)
-        x_intercept.extend([x1, x2])
+        x1, x2, value = quadratic_roots(constants)
+        if value != False:
+            x_intercept.append([x1, x2])
+        else:
+            xvalue = False
     else:
         tol = 0.0000000000001
         approx_x, approx_y = smallest_x_intercept(
@@ -87,7 +117,7 @@ def get_x_y_intercept(constants, powers, x_start, x_end, y_start, y_end, formula
             constants, powers, approx_x, tol
         )
         x_intercept.append(smallest_x)
-    return y_intercept, x_intercept
+    return y_intercept, x_intercept, yvalue, xvalue
 
 
 def main():

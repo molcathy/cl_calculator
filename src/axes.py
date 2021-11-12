@@ -1,5 +1,14 @@
 from tkinter import Tk, Canvas, mainloop
+from any_power import polynomial
 from scale import get_fixed_scale_values, get_y_scale, get_x_scale
+from graph_scale import limits
+from tokenizef import (
+    contains_number,
+    get_tokens,
+    get_constant_power,
+    generate_equation,
+    string_constant_power,
+)
 
 
 def draw_lines(
@@ -16,10 +25,16 @@ def draw_lines(
     y_end,
     y_tk_start,
     y_tk_end,
+    polynomial,
 ):
     """draw_lines takes the values of the x and y axes
     getting the values of each axes by having the the start
     and end values then draws the line."""
+
+    tokens = get_tokens(polynomial)
+    constants, powers = get_constant_power(tokens)
+
+    x_start, x_end, y_start, y_end = limits(constants, powers, polynomial)
 
     canvas.create_line(
         get_x_scale(x1, x_start, x_end, x_tk_start, x_tk_end),
@@ -45,6 +60,7 @@ def indent(
     y_end,
     y_tk_start,
     y_tk_end,
+    polynomial,
 ):
     """indent takes in the values of the axis, figuring
     out wether its a y or x axis then drawing indents
@@ -52,7 +68,7 @@ def indent(
     the current values underneath"""
 
     if int(y1) == 0:
-        for x in range(x1, (x2 + 1)):
+        for x in range(x1, x2, 2):
             draw_lines(
                 canvas,
                 x,
@@ -67,6 +83,7 @@ def indent(
                 y_end,
                 y_tk_start,
                 y_tk_end,
+                polynomial,
             )
             canvas.create_text(
                 get_x_scale(x, x_start, x_end, x_tk_start, x_tk_end),
@@ -76,7 +93,7 @@ def indent(
             )
 
     if int(x1) == 0:
-        for y in range(y1, (y2 + 1)):
+        for y in range(y1, y2, 2):
             draw_lines(
                 canvas,
                 0,
@@ -91,6 +108,7 @@ def indent(
                 y_end,
                 y_tk_start,
                 y_tk_end,
+                polynomial,
             )
             canvas.create_text(
                 get_x_scale(-0.5, x_start, x_end, x_tk_start, x_tk_end),
@@ -105,6 +123,7 @@ def main():
     canvas = Canvas(width=1000, height=1000, bg="lightblue")
     canvas.grid()
 
+    polynomial = "3x^2 - 5x + 3"
     x_tk_start = 100
     x_tk_end = 700
     x_start = -5
@@ -129,6 +148,7 @@ def main():
         y_end,
         y_tk_start,
         y_tk_end,
+        polynomial,
     )
     draw_lines(
         canvas,
@@ -144,6 +164,7 @@ def main():
         y_end,
         y_tk_start,
         y_tk_end,
+        polynomial,
     )
 
     indent(
@@ -160,6 +181,7 @@ def main():
         y_end,
         y_tk_start,
         y_tk_end,
+        polynomial,
     )
     indent(
         canvas,
@@ -175,6 +197,7 @@ def main():
         y_end,
         y_tk_start,
         y_tk_end,
+        polynomial,
     )
     mainloop()
 

@@ -15,6 +15,10 @@ def test_differentiation():
         ],
         [1.0, 0.0, -1.0],
     )
+    assert integration_differentiation.differentiation([4, 2], [1, -16]) == (
+        [4, -32],
+        [3, 1],
+    )
 
 
 def test_integration():
